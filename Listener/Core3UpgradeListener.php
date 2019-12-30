@@ -13,23 +13,14 @@ declare(strict_types=1);
 
 namespace Zikula\ExtensionsModule\Listener;
 
-use Doctrine\DBAL\Connection;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Zikula\Common\ColumnExistsTrait;
 use Zikula\Core\CoreEvents;
 use Zikula\Core\Event\GenericEvent;
 
 class Core3UpgradeListener implements EventSubscriberInterface
 {
-    /**
-     * @var Connection
-     */
-    private $conn;
-
-    public function __construct(
-        Connection $connection
-    ) {
-        $this->conn = $connection;
-    }
+    use ColumnExistsTrait;
 
     public static function getSubscribedEvents()
     {
@@ -52,18 +43,5 @@ class Core3UpgradeListener implements EventSubscriberInterface
         foreach ($commands as $sql) {
             $this->conn->executeQuery($sql);
         }
-    }
-
-    private function columnExists(string $tableName, string $columnName): bool
-    {
-        $sm = $this->conn->getSchemaManager();
-        $existingColumns = $sm->listTableColumns($tableName);
-        foreach ($existingColumns as $existingColumn) {
-            if ($existingColumn->getName() === $columnName) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
