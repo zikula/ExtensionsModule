@@ -11,11 +11,16 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\ExtensionsModule;
+namespace Zikula\ExtensionsModule\Installer;
 
 /**
- * Base module definition for the extensions module.
+ * Interface InstallerInterface
  */
-class ZikulaExtensionsModule extends AbstractCoreModule
+interface InstallerInterface
 {
+    public function install(): bool;
+
+    public function upgrade(string $oldVersion): bool;
+
+    public function uninstall(): bool;
 }

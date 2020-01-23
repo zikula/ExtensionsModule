@@ -13,9 +13,12 @@ declare(strict_types=1);
 
 namespace Zikula\ExtensionsModule;
 
-/**
- * Base module definition for the extensions module.
- */
-class ZikulaExtensionsModule extends AbstractCoreModule
+use Zikula\Bundle\CoreBundle\AbstractBundle;
+
+abstract class AbstractModule extends AbstractBundle
 {
+    public function getNameType(): string
+    {
+        return 'Module';
+    }
 }

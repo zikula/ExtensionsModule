@@ -13,9 +13,6 @@ declare(strict_types=1);
 
 namespace Zikula\ExtensionsModule;
 
-/**
- * Base module definition for the extensions module.
- */
-class ZikulaExtensionsModule extends AbstractCoreModule
+abstract class AbstractCoreModule extends AbstractModule
 {
 }

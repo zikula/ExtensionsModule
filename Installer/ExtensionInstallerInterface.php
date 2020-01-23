@@ -11,11 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\ExtensionsModule;
+namespace Zikula\ExtensionsModule\Installer;
+
+use Zikula\Bundle\CoreBundle\AbstractBundle;
 
 /**
- * Base module definition for the extensions module.
+ * Interface ExtensionInstallerInterface
  */
-class ZikulaExtensionsModule extends AbstractCoreModule
+interface ExtensionInstallerInterface extends InstallerInterface
 {
+    public function setBundle(AbstractBundle $bundle): void;
 }
