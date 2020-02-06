@@ -13,10 +13,6 @@ declare(strict_types=1);
 
 namespace Zikula\ExtensionsModule;
 
-abstract class AbstractModule extends AbstractExtension
+abstract class AbstractCoreTheme extends AbstractTheme
 {
-    public function getNameType(): string
-    {
-        return 'Module';
-    }
 }
